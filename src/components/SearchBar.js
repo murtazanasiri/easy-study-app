@@ -2,19 +2,29 @@ import React, { useState } from "react";
 
 import "../css/MainStyle.css";
 
-function SearchBar() {
+function SearchBar({ onSearch }) {
   // State to store the user's query
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchError, setSearchError] = useState("");
 
   // Function to handle the search query input
   const handleSearchInput = (e) => {
-    setSearchQuery(e.targer.value);
+    setSearchQuery(e.target.value);
   };
 
   // Function to handle the search button click
   const handleSearch = () => {
-    // Here you can call the function to fetch data from the API based on the 'searchQuery'
-    // example: fetchDataFromAPI(searchQuery)
+    // Check if the search query is emapy or contains only whitespace
+    if (!searchQuery.trim()) {
+      setSearchError("Please enter a valid seaerch query");
+      return; // Prevent further execution
+    }
+
+    // Clear any previous search error.
+    setSearchError("");
+
+    // call the onSearch function with the searchQuery
+    onSearch(searchQuery);
   };
 
   return (
@@ -36,10 +46,12 @@ function SearchBar() {
               id="search"
               type="text"
               placeholder="What are you looking for?"
+              value={searchQuery}
+              onChange={handleSearchInput}
             />
           </div>
           <div class="input-field second-wrap">
-            <button class="btn-search" type="button">
+            <button class="btn-search" type="button" onClick={handleSearch}>
               SEARCH
             </button>
           </div>
@@ -48,6 +60,7 @@ function SearchBar() {
           Keyword like. Computer, React, Sport, Finish language ...
         </span>
       </form>
+      <span className="info">{searchError}</span>
     </div>
   );
 }
