@@ -2,6 +2,16 @@ import React from "react";
 import "../css/ResultStyle.css";
 
 function Result({ searchData }) {
+  const truncateDescription = (description, wordLimit) => {
+    if (description && typeof description === "string") {
+      const words = description.split(" ");
+      if (words.length > wordLimit) {
+        return words.splice(0, wordLimit).join(" ") + "...";
+      }
+      return description;
+    }
+  };
+
   if (searchData.length === 0) {
     return <p>No results found for the given search query.</p>;
   }
@@ -18,7 +28,8 @@ function Result({ searchData }) {
               <div class="media-body">
                 <h4 class="media-heading">{book.title}</h4>
                 <p class="text-right">{book.authors}</p>
-                <p>{book.description}</p>
+                <p>{truncateDescription(book.description, 40)}</p>{" "}
+                {/* Truncate description to 100 words */}
                 <ul class="list-inline list-unstyled">
                   <li>
                     <span>
