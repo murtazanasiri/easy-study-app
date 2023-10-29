@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/ResultStyle.css";
+import Header from "./Header";
 
 function Result({ searchData }) {
   const truncateDescription = (description, wordLimit) => {
@@ -29,6 +30,8 @@ function Result({ searchData }) {
 
   return (
     <div class="container">
+      <Header></Header>
+      {/* Add the Header component */}
       <center>
         {searchData.map((book, index) => (
           <div class="well" key={index}>
