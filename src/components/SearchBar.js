@@ -1,30 +1,27 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import "../css/MainStyle.css";
 
 function SearchBar({ onSearch }) {
-  // State to store the user's query
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchError, setSearchError] = useState("");
 
-  // Function to handle the search query input
   const handleSearchInput = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  // Function to handle the search button click
   const handleSearch = () => {
-    // Check if the search query is emapy or contains only whitespace
     if (!searchQuery.trim()) {
-      setSearchError("Please enter a valid seaerch query");
-      return; // Prevent further execution
+      setSearchError("Please enter a valid search query");
+      return;
     }
 
-    // Clear any previous search error.
     setSearchError("");
 
-    // call the onSearch function with the searchQuery
     onSearch(searchQuery);
+
+    navigate("/results"); // Navigate to the "/results" route
   };
 
   return (
@@ -58,7 +55,7 @@ function SearchBar({ onSearch }) {
         </div>
 
         <span class="info">
-          Keyword like. Computer, React, Sport, Finish language ...
+          Keyword like. Computer, React, Sport, Finnish language ...
         </span>
         <br></br>
         <span className="info">{searchError}</span>

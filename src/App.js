@@ -1,9 +1,17 @@
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+
 import logo from "./logo.svg";
 import "./App.css";
 
 import SearchBar from "./components/SearchBar";
 import Result from "./components/Result";
-import React, { useState } from "react";
+import Details from "./components/Details";
 
 function App() {
   const [searchData, setSearchData] = useState(null);
@@ -37,10 +45,13 @@ function App() {
   return (
     <div className="App">
       <h1>📖 Easy Book Study 📚</h1>
-      {/* Render the SearchBar component */}
-      <SearchBar onSearch={fetchDataFromAPI}></SearchBar>
-      {/* Render the Result component */}
-      <Result searchData={searchData}></Result>
+      <Router>
+        <Routes>
+          <Route path="/" element={<SearchBar onSearch={fetchDataFromAPI} />} />
+          <Route path="/results" element={<Result searchData={searchData} />} />
+          <Route path="/details/:bookId" element={<Details />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

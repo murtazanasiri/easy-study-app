@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../css/ResultStyle.css";
 
 function Result({ searchData }) {
@@ -11,11 +12,11 @@ function Result({ searchData }) {
       return description;
     }
 
-    return ""; // Added this line to handle cases where description is not provided.
+    return "";
   };
 
   if (searchData === null) {
-    return null; // Return nothing if searchData is null (initial load)
+    return null;
   } else if (searchData.length === 0) {
     return (
       <center>
@@ -30,16 +31,19 @@ function Result({ searchData }) {
     <div class="container">
       <center>
         {searchData.map((book, index) => (
-          <div class="well">
+          <div class="well" key={index}>
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" src={book.smallThumbnail}></img>
+                <img
+                  class="media-object"
+                  src={book.smallThumbnail}
+                  alt="Thumbnail"
+                ></img>
               </a>
               <div class="media-body">
                 <h4 class="media-heading">{book.title}</h4>
                 <p class="text-right">{book.authors}</p>
-                <p>{truncateDescription(book.description, 30)}</p>{" "}
-                {/* Truncate description to 100 words */}
+                <p>{truncateDescription(book.description, 30)}</p>
                 <ul class="list-inline list-unstyled">
                   <li>
                     <span>
@@ -54,6 +58,9 @@ function Result({ searchData }) {
                     <span>Category: {book.categories}</span>
                   </li>
                   <li>|</li>
+                  <li>
+                    <Link to={`/details/${index}`}>Details</Link>
+                  </li>
                 </ul>
               </div>
             </div>
