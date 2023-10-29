@@ -6,7 +6,7 @@ import Result from "./components/Result";
 import React, { useState } from "react";
 
 function App() {
-  const [searchData, setSearchData] = useState([]);
+  const [searchData, setSearchData] = useState(null);
 
   // Function to fetch data from the Google Books API
   const fetchDataFromAPI = (searchQuery) => {

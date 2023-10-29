@@ -56,11 +56,13 @@ function SearchBar({ onSearch }) {
             </button>
           </div>
         </div>
+
         <span class="info">
           Keyword like. Computer, React, Sport, Finish language ...
         </span>
+        <br></br>
+        <span className="info">{searchError}</span>
       </form>
-      <span className="info">{searchError}</span>
     </div>
   );
 }

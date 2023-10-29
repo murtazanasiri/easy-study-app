@@ -10,10 +10,20 @@ function Result({ searchData }) {
       }
       return description;
     }
+
+    return ""; // Added this line to handle cases where description is not provided.
   };
 
-  if (searchData.length === 0) {
-    return <p>No results found for the given search query.</p>;
+  if (searchData === null) {
+    return null; // Return nothing if searchData is null (initial load)
+  } else if (searchData.length === 0) {
+    return (
+      <center>
+        <span className="info">
+          No results found for the given search query.
+        </span>
+      </center>
+    );
   }
 
   return (
@@ -28,7 +38,7 @@ function Result({ searchData }) {
               <div class="media-body">
                 <h4 class="media-heading">{book.title}</h4>
                 <p class="text-right">{book.authors}</p>
-                <p>{truncateDescription(book.description, 40)}</p>{" "}
+                <p>{truncateDescription(book.description, 30)}</p>{" "}
                 {/* Truncate description to 100 words */}
                 <ul class="list-inline list-unstyled">
                   <li>
