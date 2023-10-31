@@ -14,7 +14,7 @@ import Result from "./components/Result";
 import Details from "./components/Details";
 
 function App() {
-  const [searchData, setSearchData] = useState(null);
+  const [searchData, setSearchData] = useState([]); // Initialize searchData as an empty array
 
   // Function to fetch data from the Google Books API
   const fetchDataFromAPI = (searchQuery) => {
@@ -48,8 +48,16 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<SearchBar onSearch={fetchDataFromAPI} />} />
-          <Route path="/results" element={<Result searchData={searchData} />} />
-          <Route path="/details/:bookId" element={<Details />} />
+          <Route
+            path="/results"
+            element={
+              searchData.length > 0 ? <Result searchData={searchData} /> : null
+            }
+          />
+          <Route
+            path="/details/:bookId"
+            element={<Details searchData={searchData} />}
+          />
         </Routes>
       </Router>
     </div>

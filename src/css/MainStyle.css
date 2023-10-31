@@ -100,3 +100,14 @@
   color: #ccc;
   padding-left: 26px;
 }
+
+.headNav {
+  padding-bottom: 20px;
+}
+
+.img {
+  margin-left: 250px;
+  margin-top: 25px;
+  max-width: 100%;
+  height: auto;
+}

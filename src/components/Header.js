@@ -1,11 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "../css/MainStyle.css";
+
 function Header() {
   return (
-    <header>
-      <Link to="/">Go Back to Search</Link>
-    </header>
+    <div className="headNav">
+      <center>
+        <header>
+          <Link to="/" className="btn btn-primary">
+            Go Back to Search
+          </Link>
+        </header>
+      </center>
+    </div>
   );
 }
 
