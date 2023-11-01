@@ -29,28 +29,28 @@ function Result({ searchData }) {
   }
 
   return (
-    <div class="container">
+    <div className="container">
       <Header></Header>
       {/* Add the Header component */}
       <center>
         {searchData.map((book, index) => (
-          <div class="well" key={index}>
-            <div class="media">
-              <a class="pull-left" href="#">
+          <div className="well" key={index}>
+            <div className="media">
+              <a className="pull-left" href="#">
                 <img
-                  class="media-object"
+                  className="media-object"
                   src={book.smallThumbnail}
                   alt="Thumbnail"
                 ></img>
               </a>
-              <div class="media-body">
-                <h4 class="media-heading">{book.title}</h4>
-                <p class="text-right">{book.authors}</p>
+              <div className="media-body">
+                <h4 className="media-heading">{book.title}</h4>
+                <p className="text-right">{book.authors}</p>
                 <p>{truncateDescription(book.description, 30)}</p>
-                <ul class="list-inline list-unstyled">
+                <ul className="list-inline list-unstyled">
                   <li>
                     <span>
-                      <i class="glyphicon glyphicon-calendar"></i>
+                      <i className="glyphicon glyphicon-calendar"></i>
                       {book.publishedDate}
                     </span>
                   </li>

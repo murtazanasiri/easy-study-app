@@ -25,11 +25,11 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <div class="s130">
+    <div className="s130">
       <form>
-        <div class="inner-form">
-          <div class="input-field first-wrap">
-            <div class="svg-wrapper">
+        <div className="inner-form">
+          <div className="input-field first-wrap">
+            <div className="svg-wrapper">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -47,14 +47,14 @@ function SearchBar({ onSearch }) {
               onChange={handleSearchInput}
             />
           </div>
-          <div class="input-field second-wrap">
-            <button class="btn-search" type="button" onClick={handleSearch}>
+          <div className="input-field second-wrap">
+            <button className="btn-search" type="button" onClick={handleSearch}>
               SEARCH
             </button>
           </div>
         </div>
 
-        <span class="info">
+        <span className="info">
           Keyword like. Computer, React, Sport, Finnish language ...
         </span>
         <br></br>
